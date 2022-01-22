@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'screens/home.dart';
+import 'screens/sign_in.dart';
+import 'screens/sign_up.dart';
+import 'screens/view_noted.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,121 +21,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainPage(),
-    );
-  }
-}
-
-class MainPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/mainpage.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Center(
-              child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: 40,
-              ),
-              SizedBox(
-                width: 200,
-                height: 50,
-                child: RaisedButton(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AssignmentPage()),
-                    );
-                  },
-                  color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  child: Text('ASSIGNMENT'),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              SizedBox(
-                width: 200,
-                height: 50,
-                child: RaisedButton(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AssignmentPage()),
-                    );
-                  },
-                  color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  child: Text('CALENDAR'),
-                ),
-              ),
-            ],
-          )),
-        ),
-      ),
-    );
-  }
-}
-
-class AssignmentPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Assignment'),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 200,
-          ),
-          SizedBox(
-            width: 200,
-            height: 50,
-            child: RaisedButton(
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
-              onPressed: () {
-                print("hello");
-              },
-              color: Colors.blue,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
-              child: Text('ASSIGNMENT'),
-            ),
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          SizedBox(
-            width: 200,
-            height: 50,
-            child: RaisedButton(
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
-              onPressed: () {
-                print("hello");
-              },
-              color: Colors.blue,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
-              child: Text('CALENDAR'),
-            ),
-          ),
-        ],
-      ),
+      routes: {
+        'signup': (context) => SignUp(),
+        'signin': (context) => SignIn(),
+        'viewnoted': (context) => ViewNoted(),
+        'home': (context) => Home(),
+      },
+      initialRoute: 'signin',
     );
   }
 }
