@@ -149,7 +149,10 @@ class SignIn extends StatelessWidget {
                                       color: Color(0xff103A4FF),
                                       borderRadius: BorderRadius.circular(10)),
                                   child: TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushReplacementNamed(
+                                          context, 'start');
+                                    },
                                     child: Text(
                                       'Back',
                                       style: TextStyle(color: Colors.white),
