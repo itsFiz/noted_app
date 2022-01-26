@@ -177,7 +177,8 @@ class SignUp extends StatelessWidget {
                                         int res = await userDAO.register(
                                             usernameController.text,
                                             passwordController.text);
-                                        if (res == 1) {
+                                        print(res);
+                                        if (res != 0) {
                                           Navigator.pushReplacementNamed(
                                               context, 'signin');
                                         } else {

@@ -23,9 +23,9 @@ class UserDAO extends ChangeNotifier {
     Database? db = await databaseHelper.database;
     List<Map> res = await db!.query(tableUser,
         columns: ['username', 'password'],
-        where: 'username = ?',
-        whereArgs: [username]);
-    if (res.isNotEmpty) {
+        where: 'username = ? and password = ?',
+        whereArgs: [username, password]);
+    if (res.length != 0) {
       return res.first['username'];
     }
     return null;

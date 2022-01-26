@@ -85,7 +85,7 @@ class _ViewNotedState extends State<ViewNoted> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      'Notes',
+                      'Noted List',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: Color(0xff7DD8FF),

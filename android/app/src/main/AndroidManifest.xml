@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_project">
    <application
-        android:label="flutter_project"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Noted!"
+        android:icon="@mipmap/iicon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

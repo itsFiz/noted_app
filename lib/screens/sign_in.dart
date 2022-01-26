@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/services/dao.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
+
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  String loginerror = '';
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     UserDAO userDAO = UserDAO();
-    TextEditingController usernameController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
     GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
     return Scaffold(
@@ -49,6 +56,13 @@ class SignIn extends StatelessWidget {
                             EdgeInsets.symmetric(horizontal: 60, vertical: 80),
                         child: Column(
                           children: [
+                            Text(
+                              loginerror,
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
                             TextFormField(
                               controller: usernameController,
                               validator: (val) => val!.isEmpty
@@ -177,12 +191,17 @@ class SignIn extends StatelessWidget {
                                         dynamic res = await userDAO.login(
                                             usernameController.text,
                                             passwordController.text);
+                                        print(res);
                                         if (res != null) {
                                           Navigator.pushReplacementNamed(
                                               context, 'home',
                                               arguments: {'username': res});
                                         }
                                         print('Login error');
+                                        setState(() {
+                                          loginerror =
+                                              'Invalid username/password';
+                                        });
                                       } else {
                                         print('error credentials');
                                       }
